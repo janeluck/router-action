@@ -28,7 +28,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Development',
+            title: 'REACT-ROUTER',
             template: './src/index.html'
 
         })
