@@ -5,12 +5,16 @@ import React, {Component} from 'react'
 import ReactDom, {render} from 'react-dom'
 import PropTypes from 'prop-types';
 import Animate from 'rc-animate';
-
+import 'rc-dialog/assets/index.css';
+import Dialog from 'rc-dialog'
 import {
     BrowserRouter as Router,
     Route,
     Link
 } from 'react-router-dom'
+
+
+import {ajax} from './util'
 
 const Home = () => (
     <div>
@@ -78,24 +82,36 @@ const BasicExample = () => (
 )
 
 
-
-
-class D extends Component {
-    render() {
-        return <div>D
-
-          <Demo />
-
-        </div>
-    }
-}
-
 class C extends Component {
     constructor(props) {
         super(props)
     }
 
     container = null
+
+
+    state = {
+        visible: true,
+    }
+
+    onAppear = (key) => {
+        console.log('appear', key);
+    }
+
+    onEnter = (key) => {
+        console.log('enter', key);
+    }
+
+    onLeave = (key) => {
+        console.log('leave', key);
+    }
+
+    toggleAnimate = () => {
+        this.setState({
+            visible: !this.state.visible,
+        });
+    }
+
 
     componentDidMount() {
 
@@ -104,7 +120,8 @@ class C extends Component {
         this.renderPortal()
     }
 
-    removePortal() {
+    removePortal = () => {
+        console.log('unmountComponent')
         ReactDom.unmountComponentAtNode(this.container)
     }
 
@@ -115,7 +132,17 @@ class C extends Component {
     }
 
     renderPortal = () => {
-        ReactDom.render(<D/>, this.container)
+        ReactDom.render(<Dialog
+            maskClosable
+            closable
+            title={'ss'}
+            visible
+        >
+            <p>first dialog</p>
+            <button onClick={this.removeInAPromise}>
+                click me!
+            </button>
+        </Dialog>, this.container)
     }
 
     removeInAPromise = () => {
@@ -128,6 +155,11 @@ class C extends Component {
 
         p.then(() => {
             console.log('then consoled')
+            debugger
+            new ajax({
+                async: false,
+                url: 'http://www.json-generator.com/api/json/get/bTETpwnziq?indent=2'
+            })
         })
     }
 
@@ -137,78 +169,10 @@ class C extends Component {
             <div id='div2'>
                 div2
             </div>
-            <button onClick={this.removeInAPromise}>
-                click me!
-            </button>
 
 
         </div>
     }
-}
-
-
-
-
-const Div = (props) => {
-  const { style, show, ...restProps } = props;
-  const newStyle = { ...style, display: show ? '' : 'none' };
-  return <div {...restProps} style={newStyle}/>;
-};
-
-Div.propTypes = {
-  style: PropTypes.object,
-  show: PropTypes.bool,
-};
-
-class Demo extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      exclusive: false,
-      enter: true,
-    };
-  }
-
-  toggle(field) {
-    this.setState({
-      [field]: !this.state[field],
-    });
-  }
-
-  render() {
-    const style = {
-      width: '200px',
-      height: '200px',
-      backgroundColor: 'red',
-    };
-    return (
-      <div>
-        <label><input
-          type="checkbox"
-          onChange={this.toggle.bind(this, 'enter')}
-          checked={this.state.enter}
-        />
-          show</label>
-        &nbsp;
-        <label><input
-          type="checkbox"
-          onChange={this.toggle.bind(this, 'exclusive')}
-          checked={this.state.exclusive}
-        />
-          exclusive</label>
-        <br/><br/>
-        <Animate
-          component=""
-          exclusive={this.state.exclusive}
-          showProp="show"
-          transitionName="fade"
-        >
-          <Div show={this.state.enter} style={style}/>
-        </Animate>
-      </div>
-    );
-  }
 }
 
 
