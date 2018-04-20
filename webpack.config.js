@@ -14,9 +14,14 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.jsx?/,
-                include:  path.resolve(__dirname, 'src'),
+                test: /\.jsx?$/,
+                include: path.resolve(__dirname, 'src'),
                 loader: 'babel-loader'
+            },
+            {
+                test: /\.less$/,
+                include: path.resolve(__dirname, 'src'),
+                loader: 'less'
             }
         ]
     },
