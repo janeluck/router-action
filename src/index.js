@@ -12,7 +12,7 @@ import {
     Route,
     Link
 } from 'react-router-dom'
-
+import './modules/handleDate'
 
 import {ajax} from './util'
 

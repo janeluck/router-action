@@ -22,6 +22,7 @@
   "homepage": "https://github.com/janeluck/router-action#readme",
   "dependencies": {
     "history": "^4.7.2",
+    "moment": "^2.22.1",
     "rc-animate": "^2.4.4",
     "rc-dialog": "^7.1.4",
     "react": "^16.1.1",
