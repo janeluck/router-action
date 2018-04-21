@@ -42,7 +42,8 @@ module.exports = {
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
-        port: '3009'
+        port: '3009',
+        historyApiFallback: true
     },
     plugins: [
         new HtmlWebpackPlugin({
