@@ -13,6 +13,7 @@ import {
     Link
 } from 'react-router-dom'
 import './modules/handleDate'
+import './modules/promise'
 
 import {ajax} from './util'
 
