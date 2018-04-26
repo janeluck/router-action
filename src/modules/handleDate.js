@@ -42,13 +42,3 @@ function getSpecialDateRange(step, basicDate, format) {
 }
 
 
-// 昨天
-console.log(getSpecialDateRange(1, moment().subtract(1, 'd')))
-
-
-// 近七天
-console.log(getSpecialDateRange(7))
-
-
-// 近30天
-console.log(getSpecialDateRange(30))
