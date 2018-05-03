@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import Animate from 'rc-animate';
 import 'rc-dialog/assets/index.css';
 import Blocking from './modules/blockingRender'
+import {BlockUI} from './modules/process'
 import {
     BrowserRouter as Router,
     Route,
@@ -73,7 +74,7 @@ const BasicExample = () => (
                 <li><Link to="/topics">Topics</Link></li>
                 <li><Link to="/blocking">Blocking</Link></li>
             </ul>
-
+                <BlockUI />
             <hr/>
 
             <Route exact path="/" component={Home}/>
