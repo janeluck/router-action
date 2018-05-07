@@ -7,8 +7,14 @@ export default class A extends Component {
 
     componentDidMount() {
         this.div.addEventListener('click', e => {
+
             console.log('dom event')
-        })
+        }, false)
+
+        this.div.addEventListener('click', e => {
+
+            console.log('dom event  capture')
+        }, true)
     }
 
     componentWillUnMount() {
@@ -17,18 +23,24 @@ export default class A extends Component {
 
     divClick = (e) => {
         console.log('react event')
-        e.stopPropagation()
+
     }
 
     render() {
         return <div>
             click
             <div>
-                <div ref={div => this.div = div} onClickCapture={this.divClick}>
+                <div ref={div => this.div = div} onClick={this.divClick}>
 
-                    <div onClickCapture={() => {
+                    <div onClick={() => {
                         console.log('div child event click')
-                    }}>
+                    }}
+
+                         onClickCapture={() => {
+                             console.log('11div child event click')
+                         }}
+
+                    >
                         divchild
                     </div>
 
