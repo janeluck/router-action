@@ -8,6 +8,8 @@ import Animate from 'rc-animate';
 import 'rc-dialog/assets/index.css';
 import Blocking from './modules/blockingRender'
 import {BlockUI} from './modules/process'
+import ReactEventComponent from './modules/reactEvent'
+import {Log, VisualizerProvider} from 'react-lifecycle-visualizer'
 import {
     BrowserRouter as Router,
     Route,
@@ -66,23 +68,32 @@ const Topics = ({match}) => (
 )
 
 const BasicExample = () => (
-    <Router>
-        <div>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/topics">Topics</Link></li>
-                <li><Link to="/blocking">Blocking</Link></li>
-            </ul>
-                <BlockUI />
-            <hr/>
+    <VisualizerProvider>
+        <div style={{display: 'flex'}}>
+            <Router>
+                <div>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/topics">Topics</Link></li>
+                        <li><Link to="/blocking">Blocking</Link></li>
+                        <li><Link to="/reactEvent">ReactEventComponent</Link></li>
+                    </ul>
+                    <BlockUI/>
+                    <hr/>
 
-            <Route exact path="/" component={Home}/>
-            <Route path="/about" component={About}/>
-            <Route path="/topics" component={Topics}/>
-            <Route path="/blocking" component={Blocking}/>
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/about" component={About}/>
+                    <Route path="/topics" component={Topics}/>
+                    <Route path="/blocking" component={Blocking}/>
+                    <Route path="/reactEvent" component={ReactEventComponent}/>
+                </div>
+            </Router>
+            <Log/>
         </div>
-    </Router>
+
+
+    </VisualizerProvider>
 )
 
 

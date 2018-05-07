@@ -12,7 +12,34 @@ import Dialog from 'rc-dialog'
 
 import {ajax} from '../util'
 
-export default class C extends Component {
+import {traceLifecycle} from 'react-lifecycle-visualizer';
+
+@traceLifecycle
+class ComponentToTrace extends React.Component {
+
+    render() {
+        return (
+            <div>
+                lifecyclepanel
+                <this.LifecyclePanel/>
+            </div>
+        );
+    }
+}
+
+
+export default class A extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return <ComponentToTrace />
+    }
+}
+
+
+export  class C extends Component {
     constructor(props) {
         super(props)
     }
