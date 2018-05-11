@@ -1,9 +1,23 @@
 import React, {Component} from "react"
 
-export default class A extends Component {
+let a = {
+    v: {
+        value: 0
+    },
+    q: 0,
+    r: 0
+}
+
+class A extends Component {
     constructor(props) {
         super(props)
     }
+
+    componentDidUpdate() {
+        debugger
+    }
+
+    state = a
 
     componentDidMount() {
         this.div.addEventListener('click', e => {
@@ -15,6 +29,27 @@ export default class A extends Component {
 
             console.log('dom event  capture')
         }, true)
+
+        /*   debugger
+           this.setState({
+               v: 1
+           }, () => {
+               debugger
+           })
+           this.setState({
+               q: 1
+           }, () => {
+               debugger
+           })
+           this.setState({
+               r: 1
+           }, () => {
+               debugger
+           })
+   */
+
+        a.v.value = 1
+        this.setState(a)
     }
 
     componentWillUnMount() {
@@ -27,7 +62,14 @@ export default class A extends Component {
     }
 
     render() {
+        const {v, q, r} = this.state
         return <div>
+            <div>
+                {v.value}
+                {q}
+                {r}
+            </div>
+
             click
             <div>
                 <div ref={div => this.div = div} onClick={this.divClick}>
@@ -47,6 +89,10 @@ export default class A extends Component {
 
                 </div>
             </div>
+
         </div>
     }
 }
+
+
+export default A

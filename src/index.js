@@ -18,6 +18,7 @@ import {
 import './modules/handleDate'
 import './modules/lo'
 import './wheel/APromise'
+import './modules/sprintf'
 
 import {ajax} from './util'
 
