@@ -22,3 +22,14 @@ export const ajax = function ({
     xhr.open(method, url, async)
     xhr.send()
 }
+
+export const deepCopy = function (origin) {
+    let copy = null
+    return copy
+}
+
+export const copy = function (origin) {
+    if (typeof origin !== 'object') return origin
+
+    return origin
+}
