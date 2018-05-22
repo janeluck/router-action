@@ -25,11 +25,21 @@ export const ajax = function ({
 
 export const deepCopy = function (origin) {
     let copy = null
+
+
     return copy
 }
 
 export const copy = function (origin) {
+    // null
+    if (origin === null) return null
+
+    // primitive and function
     if (typeof origin !== 'object') return origin
+
+
+
+
 
     return origin
 }
