@@ -28,7 +28,7 @@ export class BlockUI extends Component {
                 setTimeout(() => {
                     console.log('executed!!!')
                 }, 1000)
-                debugger
+
 
                 /*   setTimeout(() => {
                        for (k; k < 1000000000; k++) {
