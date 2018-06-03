@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import Animate from 'rc-animate';
 import 'rc-dialog/assets/index.css';
 import Blocking from './modules/blockingRender'
+import BatchUpdate from './modules/batchUpdate'
 import {BlockUI} from './modules/process'
 import ReactEventComponent from './modules/reactEvent'
 import {Log, VisualizerProvider} from 'react-lifecycle-visualizer'
@@ -79,8 +80,9 @@ const BasicExample = () => (
                         <li><Link to="/topics">Topics</Link></li>
                         <li><Link to="/blocking">Blocking</Link></li>
                         <li><Link to="/reactEvent">ReactEventComponent</Link></li>
+                        <li><Link to="/batchUpdate">BatchUpdate</Link></li>
                     </ul>
-                    <BlockUI/>
+          {/*          <BlockUI/>*/}
                     <hr/>
 
                     <Route exact path="/" component={Home}/>
@@ -88,6 +90,7 @@ const BasicExample = () => (
                     <Route path="/topics" component={Topics}/>
                     <Route path="/blocking" component={Blocking}/>
                     <Route path="/reactEvent" component={ReactEventComponent}/>
+                    <Route path="/batchUpdate" component={BatchUpdate}/>
                 </div>
             </Router>
             <Log/>

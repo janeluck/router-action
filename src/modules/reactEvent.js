@@ -14,7 +14,7 @@ class A extends Component {
     }
 
     componentDidUpdate() {
-        debugger
+        //debugger
     }
 
     state = a
