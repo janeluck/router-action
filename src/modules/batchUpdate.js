@@ -47,34 +47,25 @@ class Child extends Component {
 
 
     state = {
-        text: this.props.text + '~'
-    }
-
-    componentWillReceiveProps = function (nextProps) {
-        this.setState({
-            text: nextProps.text + '~'
-        });
-    }
-
-
-    handleClick = () => {
-        debugger
-        this.setState({
-            text: 'clicked'
-        });
-
-        this.props.onClick();
+        text: 'x'
     }
 
 
     handlesync = () => {
-        debugger
-        set.apply(this)
+        console.trace()
+        this.setState({
+            text: this.state.text + '-'
+        })
+        this.setState({
+            text: this.state.text + '-'
+        })
+        this.setState({
+            text: this.state.text + '-'
+        })
     }
 
     handleSettimeout = () => {
         setTimeout(() => {
-            debugger
             this.setState({
                 text: this.state.text + '-'
             })
@@ -87,6 +78,41 @@ class Child extends Component {
         })
     }
 
+    handlePromise = () => {
+        const p = new Promise(resolve => {
+            resolve()
+        })
+        p.then(result => {
+            this.setState({
+                text: this.state.text + '-'
+            })
+            this.setState({
+                text: this.state.text + '-'
+            })
+            this.setState({
+                text: this.state.text + '-'
+            })
+        })
+    }
+
+    handleSyncSet0 = () => {
+        this.setState({
+            text: this.state.text + '-'
+        })
+        this.handleSyncSet1()
+    }
+    handleSyncSet1 = () => {
+        this.setState({
+            text: this.state.text + '-'
+        })
+        this.handleSyncSet2()
+    }
+    handleSyncSet2 = () => {
+        this.setState({
+            text: this.state.text + '-'
+        })
+    }
+
 
     render = function () {
         console.log('child render');
@@ -96,9 +122,10 @@ class Child extends Component {
                 I'm child
                 <p>something from parent:</p>
                 <p>{this.state.text}</p>
-                <button onClick={this.handleClick}>click me</button>
                 <button onClick={this.handleSettimeout}>click settimeout me</button>
                 <button onClick={this.handlesync}>click handlesync</button>
+                <button onClick={this.handlePromise}>click handlePromise</button>
+                <button onClick={this.handleSyncSet0}>click handleSyncSet0</button>
             </div>
         );
     }
