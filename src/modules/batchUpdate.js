@@ -2,7 +2,17 @@
  * Created by jane on 03/06/2018.
  */
 import React, {Component} from "react"
+class Child1 extends Component {
 
+    componentWillUnmount() {
+        console.log('child unmount')
+    }
+
+    render() {
+        return <div>child div</div>
+    }
+
+}
 
 class Parent extends Component {
 
@@ -14,6 +24,11 @@ class Parent extends Component {
         this.setState({
             text: Math.random() * 1000
         });
+    }
+
+
+    componentWillUnmount() {
+        console.log('Parent unmount')
     }
 
 
@@ -118,16 +133,21 @@ class Child extends Component {
         console.log('child render');
 
         return (
-            <div className="child">
-                I'm child
-                <p>something from parent:</p>
-                <p>{this.state.text}</p>
-                <button onClick={this.handleSettimeout}>click settimeout me</button>
-                <button onClick={this.handlesync}>click handlesync</button>
-                <button onClick={this.handlePromise}>click handlePromise</button>
-                <button onClick={this.handleSyncSet0}>click handleSyncSet0</button>
+
+            <div>
+                <Child1 />
+                <div className="child">
+                    I'm child
+                    <p>something from parent:</p>
+                    <p>{this.state.text}</p>
+                    <button onClick={this.handleSettimeout}>click settimeout me</button>
+                    <button onClick={this.handlesync}>click handlesync</button>
+                    <button onClick={this.handlePromise}>click handlePromise</button>
+                    <button onClick={this.handleSyncSet0}>click handleSyncSet0</button>
+                </div>
             </div>
-        );
+
+        )
     }
 }
 
