@@ -17,7 +17,8 @@ class Child1 extends Component {
 class Parent extends Component {
 
     state = {
-        text: 'default'
+        text: 'default',
+        canClick: true
     }
 
     handleChildClick = () => {
@@ -34,11 +35,34 @@ class Parent extends Component {
 
     render = function () {
         console.log('parent render');
+        //debugger
+        const canClick = this.state.canClick
+        const props = {
+        }
+        if (canClick) {
+            props.onClick = function () {
+                alert(1)
+            }
+        }
 
         return (
             <div className="parent">
                 this is parent!
                 <Child text={this.state.text} onClick={this.handleChildClick}/>
+                <button
+                    {...props}
+
+                >mmq
+                </button>
+
+                <button
+                    onClick = {()=>{
+                        this.setState({
+                            canClick: !canClick
+                        })
+                    }}
+
+                >toggle click: {String(canClick)}</button>
             </div>
         );
     }
