@@ -37,8 +37,7 @@ class Parent extends Component {
         console.log('parent render');
         //debugger
         const canClick = this.state.canClick
-        const props = {
-        }
+        const props = {}
         if (canClick) {
             props.onClick = function () {
                 alert(1)
@@ -48,7 +47,14 @@ class Parent extends Component {
         return (
             <div className="parent">
                 this is parent!
-                <Child text={this.state.text} onClick={this.handleChildClick}/>
+                <Child
+                    onBtnClick={() => {
+                        this.setState({
+                            canClick: !canClick
+                        })
+                    }}
+
+                    onClick={this.handleChildClick}/>
                 <button
                     {...props}
 
@@ -56,7 +62,7 @@ class Parent extends Component {
                 </button>
 
                 <button
-                    onClick = {()=>{
+                    onClick={() => {
                         this.setState({
                             canClick: !canClick
                         })
@@ -155,15 +161,24 @@ class Child extends Component {
 
     render = function () {
         console.log('child render');
-
+        const text = this.state.text
+        debugger
         return (
 
             <div>
                 <Child1 />
+                {this.state.text}
+                <button onClick={() => {
+                    this.setState({
+                        text: text + 1
+                    })
+                    this.props.onBtnClick()
+                }}>change state and prop by click child button
+                </button>
                 <div className="child">
                     I'm child
                     <p>something from parent:</p>
-                    <p>{this.state.text}</p>
+                    <p>{text}</p>
                     <button onClick={this.handleSettimeout}>click settimeout me</button>
                     <button onClick={this.handlesync}>click handlesync</button>
                     <button onClick={this.handlePromise}>click handlePromise</button>

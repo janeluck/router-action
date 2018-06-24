@@ -122,6 +122,7 @@ export  class C extends Component {
 
     render() {
         const {visible} = this.state
+
         return <div id='div1'>
             div1
             <button onClick={() => {
