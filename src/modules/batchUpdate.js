@@ -47,14 +47,15 @@ class Parent extends Component {
         return (
             <div className="parent">
                 this is parent!
-                <Child
-                    onBtnClick={() => {
-                        this.setState({
-                            canClick: !canClick
-                        })
-                    }}
+                {canClick ? <Child
+                        onBtnClick={() => {
+                            this.setState({
+                                canClick: !canClick
+                            })
+                        }}
 
-                    onClick={this.handleChildClick}/>
+                        onClick={this.handleChildClick}/> : <div>parent child div</div>}
+
                 <button
                     {...props}
 
@@ -93,6 +94,15 @@ class Child extends Component {
 
     state = {
         text: 'x'
+    }
+
+
+    componentWillUnmount() {
+        debugger
+    }
+
+    componentDidMount() {
+        debugger
     }
 
 
