@@ -48,6 +48,7 @@ class Parent extends Component {
             <div className="parent">
                 this is parent!
                 <Child
+                    ref={child => this.child = child}
                     onBtnClick={() => {
                         this.setState({
                             canClick: !canClick
@@ -56,9 +57,16 @@ class Parent extends Component {
 
                     onClick={this.handleChildClick}/>
                 <button
+                    ref={btn => this.btn = btn}
                     {...props}
 
                 >mmq
+                </button>
+                <button onClick={()=>{
+                    console.log(this.btn)
+                    console.log(this.child)
+                }}>
+                    get ref
                 </button>
 
                 <button
