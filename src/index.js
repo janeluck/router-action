@@ -8,6 +8,7 @@ import Animate from 'rc-animate';
 import 'rc-dialog/assets/index.css';
 import Blocking from './modules/blockingRender'
 import BatchUpdate from './modules/batchUpdate'
+import OutReconciliation from './modules/outReconciliation'
 import {BlockUI} from './modules/process'
 import ReactEventComponent from './modules/reactEvent'
 import {Log, VisualizerProvider} from 'react-lifecycle-visualizer'
@@ -81,6 +82,7 @@ const BasicExample = () => (
                         <li><Link to="/blocking">Blocking</Link></li>
                         <li><Link to="/reactEvent">ReactEventComponent</Link></li>
                         <li><Link to="/batchUpdate">BatchUpdate</Link></li>
+                        <li><Link to="/outReconciliation">OutReconciliation</Link></li>
                     </ul>
           {/*          <BlockUI/>*/}
                     <hr/>
@@ -91,6 +93,7 @@ const BasicExample = () => (
                     <Route path="/blocking" component={Blocking}/>
                     <Route path="/reactEvent" component={ReactEventComponent}/>
                     <Route path="/batchUpdate" component={BatchUpdate}/>
+                    <Route path="/outReconciliation" component={OutReconciliation}/>
                 </div>
             </Router>
             <Log/>
