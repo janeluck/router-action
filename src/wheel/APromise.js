@@ -7,6 +7,7 @@
 // 处理异步进程, 改变代码中的地狱回调, 清晰可视化
 
 // 缺点: then的链式回调浪费资源???
+// 处理不善的promise，如果一直维持pending状态,gcc无法回收, 会造成内存泄漏
 
 
 function APromise(fn) {
@@ -124,72 +125,71 @@ function BPromise(fn) {
 })
 
 
-
 function Promise(fn) {
-  var state = 'pending';
-  var value;
-  var deferred = null;
+    var state = 'pending';
+    var value;
+    var deferred = null;
 
-  function resolve(newValue) {
-    if(newValue && typeof newValue.then === 'function') {
-      newValue.then(resolve, reject);
-      return;
-    }
-    state = 'resolved';
-    value = newValue;
+    function resolve(newValue) {
+        if (newValue && typeof newValue.then === 'function') {
+            newValue.then(resolve, reject);
+            return;
+        }
+        state = 'resolved';
+        value = newValue;
 
-    if(deferred) {
-      handle(deferred);
-    }
-  }
-
-  function reject(reason) {
-    state = 'rejected';
-    value = reason;
-
-    if(deferred) {
-      handle(deferred);
-    }
-  }
-
-  function handle(handler) {
-    if(state === 'pending') {
-      deferred = handler;
-      return;
+        if (deferred) {
+            handle(deferred);
+        }
     }
 
-    var handlerCallback;
+    function reject(reason) {
+        state = 'rejected';
+        value = reason;
 
-    if(state === 'resolved') {
-      handlerCallback = handler.onResolved;
-    } else {
-      handlerCallback = handler.onRejected;
+        if (deferred) {
+            handle(deferred);
+        }
     }
 
-    if(!handlerCallback) {
-      if(state === 'resolved') {
-        handler.resolve(value);
-      } else {
-        handler.reject(value);
-      }
+    function handle(handler) {
+        if (state === 'pending') {
+            deferred = handler;
+            return;
+        }
 
-      return;
+        var handlerCallback;
+
+        if (state === 'resolved') {
+            handlerCallback = handler.onResolved;
+        } else {
+            handlerCallback = handler.onRejected;
+        }
+
+        if (!handlerCallback) {
+            if (state === 'resolved') {
+                handler.resolve(value);
+            } else {
+                handler.reject(value);
+            }
+
+            return;
+        }
+
+        var ret = handlerCallback(value);
+        handler.resolve(ret);
     }
 
-    var ret = handlerCallback(value);
-    handler.resolve(ret);
-  }
+    this.then = function (onResolved, onRejected) {
+        return new Promise(function (resolve, reject) {
+            handle({
+                onResolved: onResolved,
+                onRejected: onRejected,
+                resolve: resolve,
+                reject: reject
+            });
+        });
+    };
 
-  this.then = function(onResolved, onRejected) {
-    return new Promise(function(resolve, reject) {
-      handle({
-        onResolved: onResolved,
-        onRejected: onRejected,
-        resolve: resolve,
-        reject: reject
-      });
-    });
-  };
-
-  fn(resolve, reject);
+    fn(resolve, reject);
 }
