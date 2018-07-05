@@ -232,3 +232,29 @@ export const getRoundValue = (value, decimal) => {
     returnValue = -returnValue;
   return returnValue.toFixed(decimal);
 }
+
+
+function save(finalPaymends, isQuickPay) {
+  //  todo
+
+  /*proxy({
+    url: '',
+
+  })*/
+  let loadingModal
+  if (isQuickPay) {
+    loadingModal = openLoadingModal()
+  }
+
+  // 手动设置延迟 使js引擎空闲让步ui渲染线程，画出loading画面
+  // 异步不再需要
+  setTimeout(function () {
+    for (var i = 0; i < 100000000; i++) {
+      Math.random() * Math.random()
+    }
+    loadingModal && loadingModal.destroy()
+    cb.utils.alert('结算成功')
+  }, 50)
+
+
+}
