@@ -4,7 +4,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import SvgIcon from 'SvgIcon'
+import SvgIcon from './svg'
 //import addEventListener from 'add-dom-event-listener'
 import _ from 'lodash'
 

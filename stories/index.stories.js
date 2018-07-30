@@ -6,6 +6,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 import A from '../src/works/forTest';
+import InputButtonPanelStory from './inputButtonPanel.story';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -20,3 +21,4 @@ storiesOf('Button', module)
   ));
 
 storiesOf('A', module).add('to Storybook', () => <A text={'A TEXT BUTTON'} />);
+storiesOf('InputButtonPanel', module).add('to Storybook', () => <InputButtonPanelStory  />);
