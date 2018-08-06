@@ -1,0 +1,191 @@
+input {
+  outline: none;
+}
+
+.InputButtonPanelWrap {
+  float: right;
+  width: 294px;
+  font-size: 16px;
+  color: #333;
+  background: rgba(219, 224, 229, 0.5);
+  border-radius: 8px;
+  padding: 15px;
+  .InputButtonPanel-row:last-child {
+    .InputButtonPanel-cell {
+      margin-bottom: 0;
+    }
+  }
+  .num {
+    float: left;
+    .InputButtonPanel-cell {
+      float: left;
+      width: 60px;
+      height: 60px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      button {
+        width: 60px;
+        height: 60px;
+        border: none;
+        background: #fff;
+        box-shadow: inset 0 -2px 0 0 rgba(173, 180, 188, 0.60);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 20px;
+        color: #505766;
+      }
+
+      button:hover {
+        background: #DCDDE0;
+      }
+      button:active {
+        background: #B9BCC2;
+        box-shadow: inset 0 -2px 0 0 #888d98;
+      }
+    }
+  }
+  .del {
+    float: left;
+    button {
+      width: 60px;
+      height: 128px;
+      border: none;
+      background: #DCDDE0;
+      margin-bottom: 8px;
+      cursor: pointer;
+      border-radius: 6px;
+      box-shadow: inset 0 -2px 0 0 #bfc1c7;
+    }
+    button:hover {
+      background: #D3D3D6;
+    }
+    button:active {
+      background: #B9BCC2;
+      box-shadow: inset 0 -2px 0 0 #888d98;
+    }
+    .InputButtonPanel-button-back {
+      svg {
+        width: 35px;
+        height: 40px;
+      }
+    }
+    .InputButtonPanel-button-clear {
+      svg {
+        width: 26px;
+        height: 40px;
+      }
+    }
+    div:last-child {
+      button {
+        margin-bottom: 0
+      }
+    }
+  }
+  .InputButtonPanel-hasSure {
+    button {
+      width: 60px;
+      height: 60px;
+      box-shadow: inset 0 -2px 0 0 #bfc1c7;
+    }
+    .InputButtonPanel-button-sure {
+      button {
+        height: 128px;
+        border-radius: 0 8px 0 8px;
+        background: linear-gradient(45deg, #EE2223 0%, #FC4C2F 100%);
+        color: #fff;
+        font-size: 20px;
+        padding: 11px;
+        box-shadow: inset 0 -2px 0 0 #db0001;
+      }
+      button:hover {
+        background: linear-gradient(45deg, #FC4C2F 0%, #EE2223 100%);
+      }
+
+    }
+  }
+
+}
+
+.InputButtonPanelWrap {
+  background: #D2D7E0;
+}
+
+.InputButtonPanelWrap .num .InputButtonPanel-cell button {
+  box-shadow: inset 0 -5px 0 0 #ADB5C3;
+}
+
+.InputButtonPanelWrap .del button {
+  background: #AAB3C4;
+  box-shadow: inset 0 -5px 0 0 #929AA8;
+}
+
+.InputButtonPanelWrap {
+  width: 350px !important;
+  padding: 15px 20px 0px 20px;
+}
+
+.InputButtonPanel-cell {
+  margin-right: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.InputButtonPanel-cell {
+  width: 70px !important;
+  height: 70px !important;
+}
+
+.InputButtonPanel-cell button {
+  font-size: 24px !important;
+}
+
+.InputButtonPanel-cell button, .InputButtonPanel-hasSure button {
+  width: 70px !important;
+  height: 70px !important;
+}
+
+.InputButtonPanel-button-sure {
+  height: 150px !important;
+  button {
+    height: 150px !important;
+    font-size: 25px !important;
+  }
+}
+
+.InputButtonPanel-button-back svg.icon, .InputButtonPanel-button-clear svg.icon {
+  vertical-align: -.45em;
+}
+
+.InputButtonPanel-cell button:hover {
+  background: #B4BCCC !important;
+}
+
+.InputButtonPanel-cell button {
+  box-shadow: inset 0 -5px 0 0 #9FA6B2 !important;
+}
+
+.InputButtonPanel-hasSure button:hover {
+  background: #9AA5BA !important;
+}
+
+.InputButtonPanel-hasSure button {
+  box-shadow: inset 0 -5px 0 0 #7B8597 !important;
+}
+
+.InputButtonPanel-button-sure button:hover {
+  background: linear-gradient(45deg, #fc4c2f, #ee2223) !important;
+}
+
+.InputButtonPanel-button-sure button {
+  box-shadow: inset 0 -5px 0 0 #D2090A !important;
+}
+
+
+
+
+.InputButtonPanel-button-clear {
+  margin-top: 2px;
+}
+
+.InputButtonPanel-button-sure {
+  margin-top: 2px;
+}
