@@ -3,8 +3,8 @@
  */
 import React, {Component} from 'react';
 
-
-import SvgIcon from '../src/works/yy/SvgIcon';
+require('../src/refinement/SvgIcon/fancy.svg')
+import SvgIcon from '../src/refinement/SvgIcon'
 
 
 export default class Story extends Component {
@@ -18,7 +18,7 @@ export default class Story extends Component {
     render() {
         return <div>
 
-            <SvgIcon type="x"/>
+            <SvgIcon type="huli"/>
         </div>
     }
 
