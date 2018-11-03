@@ -60,3 +60,4 @@ typings/
 .storybook
 .own
 .vscode
+.history
